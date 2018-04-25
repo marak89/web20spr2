@@ -1,0 +1,15 @@
+.cont{
+    margin: 10px;
+}
+
+.onSaveList{
+    list-style: none;
+}
+
+.nazwaTowaru{
+    width: 50%;
+}
+
+.jednostkaMiary{
+    width: 5%;
+}
