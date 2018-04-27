@@ -1,0 +1,11 @@
+.nazwaTowaru{
+    width: 50%;
+}
+
+.jednostkaMiary{
+    width: 5%;
+}
+
+.selected{
+    background-color: aqua !important;
+}
