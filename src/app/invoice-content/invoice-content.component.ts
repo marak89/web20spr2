@@ -63,22 +63,31 @@ export class InvoiceContentComponent implements OnInit {
 
 
   computeInvoiceContent(invoiceContent: InvoiceContent): InvoiceContent {
-    let newInvoiceContent = invoiceContent;
-    newInvoiceContent.lp = this.invoiceContents.length + 1;
+    let nic = invoiceContent;
+    nic.lp = this.invoiceContents.length + 1;
 
-    console.log(newInvoiceContent);
-
-    if (newInvoiceContent.jednostkowaNetto === 0) {
-      newInvoiceContent.jednostkowaNetto = this.obliczNettoZBrutto(newInvoiceContent.jednostkowaBrutto,newInvoiceContent.stawkaVat);
+    if (nic.jednostkowaNetto === 0) {
+      nic.jednostkowaNetto = this.obliczNettoZBrutto(nic.jednostkowaBrutto,nic.stawkaVat);
     }
 
-    if (newInvoiceContent.jednostkowaBrutto === 0) {
-      newInvoiceContent.jednostkowaBrutto = this.obliczBruttoZNetto(newInvoiceContent.jednostkowaNetto, newInvoiceContent.stawkaVat);
+    if (nic.jednostkowaBrutto === 0) {
+      nic.jednostkowaBrutto = this.obliczBruttoZNetto(nic.jednostkowaNetto, nic.stawkaVat);
+    }
+
+    if(nic.wartoscNetto === 0){
+      nic.wartoscNetto = nic.jednostkowaNetto * nic.ilosc;
+    }
+
+    if(nic.wartoscBrutto === 0){
+      nic.wartoscBrutto = nic.jednostkowaBrutto * nic.ilosc;
+    }
+
+    if(nic.kwotaVat === 0){
+      nic.kwotaVat = nic.wartoscBrutto - nic.wartoscNetto;
     }
 
 
-
-    return newInvoiceContent;
+    return nic;
   }
 
   // zaznaczanie kolorem czerwonym identycznych pozycji na fakturze!!
