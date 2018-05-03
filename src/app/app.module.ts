@@ -13,11 +13,19 @@ import { FormsModule } from '@angular/forms';
 
 import { AngularDraggableModule } from 'angular2-draggable';
 import { SortablejsModule } from 'angular-sortablejs';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DzialyService } from './dzialy.service';
+import { InvoiceService } from './invoice.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    InvoiceContentComponent
+    InvoiceContentComponent,
+    DashboardComponent,
+    MessagesComponent
     
   ],
   imports: [
@@ -25,8 +33,13 @@ import { SortablejsModule } from 'angular-sortablejs';
     FormsModule,
     AngularDraggableModule,
     SortablejsModule.forRoot({ animation: 10 }),
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    DzialyService,
+    InvoiceService,
+    MessageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

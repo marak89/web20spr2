@@ -1,79 +1,16 @@
-<div class="cont">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>Faktura Proforma
-                <small>
-                    <h2>Dodaj do systemu</h2>
-                </small>
-            </h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <span>Sprzedawca:
-                <br />
-                <b>DZIAŁ HOSTING</b>
-                <br>Adrian Mikołajczak
-                <br> PPHU DESIRE
-                <br> ul. Sikorskiego 53/2
-                <br> 42-300 MYSZKÓW
-                <br> NIP: 5771877206
-                <br> email: hosting@desire24.com</span>
-        </div>
-        <div class="col-md-4">
-            <span>
-                Nabywca:
-                <br /> Andżelika Elżbieta Zambrzycka
-                <br /> Wawrzynowa 7
-                <br /> 05-123 Chotomów
-                <br /> NIP:
-                <br /> email: angelika.zambrzycka@gmail.com
-            </span>
-        </div>
-        <div class="col-md-4">
-            <span>
-                Termin płatności: 14 dni
-                <br /> Typ płatności: przelew
-                <br /> Konto bankowe: Generuje LMS
-            </span>
-        </div>
-    </div>
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
 
- <app-invoice-content></app-invoice-content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
 
-    <div class="row justify-content-center">
-        <div class=" col-md-4 col-sm-12">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>Razem NETTO:</th>
-                        <td>0,00</td>
-                    </tr>
-                    <tr>
-                        <th>Podatki:</th>
-                        <td>0,00</td>
-                    </tr>
-                    <tr>
-                        <th>Razem BRUTTO:</th>
-                        <td>0,00</td>
-                    </tr>
-                    <tr>
-                        <th>Razem BRUTTO:</th>
-                        <td>0,00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class=" col-md-4 col-sm-12">
-            <span>Podczas zapisywania</span>
-            <ol>
-                <li class="onSaveList">
-                    <input type="checkbox" name="sendSMS"> Wyślij SMS</li>
-                <li class="onSaveList">
-                    <input type="checkbox" name="sendEmail"> Wyślij email</li>
-            </ol>
-            <button type="submit" class="btn btn-success pull-right">
-                <i class="fa fa-save"></i> Zapisz fakturę Proforma</button>
-        </div>
-    </div>
-</div>
+<body>
+    <router-outlet></router-outlet>
+    <app-messages></app-messages>
+</body>
+
+</html>

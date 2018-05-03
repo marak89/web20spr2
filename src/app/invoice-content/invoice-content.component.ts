@@ -2,14 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { InvoiceContent } from '../invoiceContent';
 import { INVOICECONTENT } from '../mock-invoiceContent';
 import { SortablejsOptions } from 'angular-sortablejs';
+import { currentInvoice } from '../currentInvoice'
+import { InvoiceService } from '../invoice.service';
+import { Dzial } from '../dzial';
+import { Invoice } from '../invoice';
+
 
 @Component({
   selector: 'app-invoice-content',
   templateUrl: './invoice-content.component.html',
   styleUrls: ['./invoice-content.component.css']
 })
-export class InvoiceContentComponent implements OnInit {
 
+export class InvoiceContentComponent implements OnInit {
+  invoice: Invoice;
+  //dzial: Dzial;
   invoiceContents = INVOICECONTENT;
   selectedInvoiceContent;
   isEdited: boolean = false;
@@ -19,7 +26,9 @@ export class InvoiceContentComponent implements OnInit {
   ];
 
 
-  constructor() {
+  constructor(
+    private invoiceService: InvoiceService
+  ) {
     this.options = {
       onUpdate: (event: any) => {
         this.ustawLp();
@@ -29,6 +38,11 @@ export class InvoiceContentComponent implements OnInit {
 
   ngOnInit() {
     this.clearSelectedInvoiceContent();
+    this.getInvoice();
+
+  }
+  getInvoice() {
+    this.invoiceService.getInvoice().subscribe(invoice => this.invoice = invoice);
   }
 
   ustawLp(): void {
@@ -58,7 +72,7 @@ export class InvoiceContentComponent implements OnInit {
   }
 
   obliczNettoZBrutto(brutto: number, vat: number): number {
-    return brutto / (1 + (vat / 100)) ;
+    return brutto / (1 + (vat / 100));
   }
 
 
@@ -67,22 +81,22 @@ export class InvoiceContentComponent implements OnInit {
     nic.lp = this.invoiceContents.length + 1;
 
     if (nic.jednostkowaNetto === 0) {
-      nic.jednostkowaNetto = this.obliczNettoZBrutto(nic.jednostkowaBrutto,nic.stawkaVat);
+      nic.jednostkowaNetto = this.obliczNettoZBrutto(nic.jednostkowaBrutto, nic.stawkaVat);
     }
 
     if (nic.jednostkowaBrutto === 0) {
       nic.jednostkowaBrutto = this.obliczBruttoZNetto(nic.jednostkowaNetto, nic.stawkaVat);
     }
 
-    if(nic.wartoscNetto === 0){
+    if (nic.wartoscNetto === 0) {
       nic.wartoscNetto = nic.jednostkowaNetto * nic.ilosc;
     }
 
-    if(nic.wartoscBrutto === 0){
+    if (nic.wartoscBrutto === 0) {
       nic.wartoscBrutto = nic.jednostkowaBrutto * nic.ilosc;
     }
 
-    if(nic.kwotaVat === 0){
+    if (nic.kwotaVat === 0) {
       nic.kwotaVat = nic.wartoscBrutto - nic.wartoscNetto;
     }
 
@@ -105,6 +119,8 @@ export class InvoiceContentComponent implements OnInit {
 
   onClickResetButton(): void {
     this.clearSelectedInvoiceContent();
+   // console.log(this.dzial);
+   // console.log(this.invoiceService.getDzial());
   }
 
 

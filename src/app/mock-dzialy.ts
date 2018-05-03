@@ -1,0 +1,30 @@
+export var DZIALY = [
+    {
+        id: 1,
+        imienazwisko: "Karolina Lipska",
+        przeznaczenie: "Internet i Telewizja ",
+        opis: "faktury za internet, telewizję, usługi głosowe oraz inne dodatkowe zwiazane z działem internet",
+        przedrostekNumeruKonta: 0,
+        nazwaFirmy: 'PPHU DESIRE Damian Lipski',
+        ulica: 'ul. Sikorskiego',
+        numer: '53/2',
+        kodPocztowy: '42-300',
+        miejscowosc: 'Myszków',
+        nip: '5771877206',
+        email: 'hosting@desire24.com',
+    },
+    {
+        id: 2,
+        imienazwisko: "Adrian Mikołajczak",
+        przeznaczenie: "Hosting i domeny",
+        opis: "faktury za hosting, domeny, certyfikaty SSL i inne działania zwiazane z działem hosting",
+        przedrostekNumeruKonta: 777,
+        nazwaFirmy: 'PPHU DESIRE Damian Lipski',
+        ulica: 'ul. Sikorskiego',
+        numer: '53/2',
+        kodPocztowy: '42-300',
+        miejscowosc: 'Myszków',
+        nip: '5771877206',
+        email: 'hosting@desire24.com',
+    }
+];

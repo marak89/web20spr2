@@ -1,0 +1,15 @@
+<h2>
+  Wybierz dział:
+</h2>
+<a *ngFor="let dzial of dzialy" 
+class="dzial dzial{{ dzial.id }}" 
+(click)="setDzial(dzial)" 
+routerLink="/invoicecontent">
+  <div>
+    <h3>{{dzial.przeznaczenie | uppercase}}</h3>
+    <p>Nazwisko na fakturze:
+      <b>{{ dzial.imienazwisko }}</b>
+    </p>
+    <p>{{ dzial.opis }}</p>
+  </div>
+</a>
