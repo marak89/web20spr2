@@ -11,7 +11,7 @@ export var DZIALY = [
         kodPocztowy: '42-300',
         miejscowosc: 'Myszków',
         nip: '5771877206',
-        email: 'hosting@desire24.com',
+        email: 'pomoc@desire24.com',
     },
     {
         id: 2,

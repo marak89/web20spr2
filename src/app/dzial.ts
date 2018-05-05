@@ -11,4 +11,4 @@ export class Dzial {
     miejscowosc: string;
     nip: string;
     email: string;
-} 
+}  
