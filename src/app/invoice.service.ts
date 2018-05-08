@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Invoice } from './invoice'
 import { Dzial } from './dzial'
-import { Observable } from 'rxjs/observable'
-import { of } from 'rxjs/observable/of'
+import { Observable, of } from 'rxjs';
 import { INVOICE } from './mock-invoice';
 import { MessageService } from './message.service';
 

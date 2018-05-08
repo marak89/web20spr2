@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Dzial } from './dzial';
 import { DZIALY } from './mock-dzialy'
-import { Observable } from 'rxjs/observable'
-import { of } from 'rxjs/observable/of'
+import { Observable, of } from 'rxjs';
+
 
 @Injectable()
 export class DzialyService {
