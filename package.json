@@ -33,6 +33,7 @@
     "ngx-bootstrap": "^2.0.4",
     "popper.js": "^1.14.3",
     "rxjs": "^6.1.0",
+    "rxjs-tslint": "^0.1.4",
     "sortablejs": "^1.7.0",
     "zone.js": "^0.8.26"
   },
