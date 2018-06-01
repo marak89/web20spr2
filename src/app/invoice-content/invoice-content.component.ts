@@ -6,6 +6,7 @@ import { currentInvoice } from '../currentInvoice'
 import { InvoiceService } from '../invoice.service';
 import { Dzial } from '../dzial';
 import { Invoice } from '../invoice';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class InvoiceContentComponent implements OnInit {
 
 
   constructor(
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private router: Router
   ) {
     this.options = {
       onUpdate: (event: any) => {
@@ -39,6 +41,12 @@ export class InvoiceContentComponent implements OnInit {
   ngOnInit() {
     this.clearSelectedInvoiceContent();
     this.getInvoice();
+    if(this.invoice.dzial.id === 0 ){
+      this.router.navigate(['wybierzdzial']);
+    }
+    if(this.invoice.customer.id === undefined ){
+      this.router.navigate(['wybierzKlienta']);
+    }
 
   }
   getInvoice() {

@@ -21,13 +21,13 @@
         <br> email: {{invoice.dzial.email}}</span>
     </div>
     <div class="col-md-4">
-      <span>
+      <span *ngIf="invoice.customer">
         Nabywca:
-        <br /> Andżelika Elżbieta Zambrzycka
-        <br /> Wawrzynowa 7
-        <br /> 05-123 Chotomów
-        <br /> NIP:
-        <br /> email: angelika.zambrzycka@gmail.com
+        <a routerLink="/wybierzKlienta" >Zmień</a>        <br />
+        <br /> {{invoice.customer.name}} {{invoice.customer.lastname}}
+        <br /> {{invoice.customer.street}} {{invoice.customer.building}}
+        <br /> {{invoice.customer.zip}} {{invoice.customer.city}}
+        <br /> NIP: {{invoice.customer.ten}} PESEL: {{invoice.customer.ssn}}
       </span>
     </div>
     <div class="col-md-4">
