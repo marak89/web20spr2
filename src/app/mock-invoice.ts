@@ -1,3 +1,5 @@
+import { Customer } from "./customer";
+
 export var INVOICE = {
     dzial: {
         id: 0,
@@ -12,5 +14,8 @@ export var INVOICE = {
         miejscowosc: "<ZDEFINIOWANO>",
         nip: "<NIE ZDEFINIOWANO>",
         email: "<NIE ZDEFINIOWANO>",
-    }
+    },
+    customer: {
+        id: undefined,
+    },
 };

@@ -23,7 +23,8 @@ import { CustomerComponent } from './customer/customer.component'
 import { CustomersService } from './customers.service';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatButtonModule, MatCheckboxModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatSelectModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -47,7 +48,12 @@ import { MatButtonModule, MatCheckboxModule, MatSelectModule, MatAutocompleteMod
     MatButtonModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
+    
   ],
   providers: [
     DzialyService,

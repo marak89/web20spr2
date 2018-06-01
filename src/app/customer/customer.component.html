@@ -1,10 +1,42 @@
-<!-- <form class="example-form">
+<form class="example-form">
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+
+    <input 
+    matInput
+     placeholder="Nazwisko"
+      aria-label="Nazwisko"
+       [matAutocomplete]="auto"
+        [formControl]="myControl"
+        >
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        
+      <mat-option
+      class="mat-option-customer"
+       *ngFor="let customer of filteredOptions | async"
+        [value]="customer.name+' '+customer.lastname"
+        (click)="clickOnCustomer(customer)"
+        >
+        <p>{{customer.name}}
+        <b>{{customer.lastname}}</b>
+        <br />
+        {{customer.street}} {{customer.building}}
+        {{customer.zip}} {{customer.city}}</p>
+
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-</form> -->
+  <br />
+
+  <mat-slide-toggle
+    [checked]="myControl.disabled"
+    (change)="myControl.disabled ? myControl.enable() : myControl.disable()">
+    Zmiana klienta
+  </mat-slide-toggle>
+</form> 
+
+<div *ngIf="selectedCustomer">
+  <button (click)="clickSaveSelectedCustomer()" >Wybierz</button>
+
+<pre >
+  {{selectedCustomer | json}}
+</pre>
+</div>

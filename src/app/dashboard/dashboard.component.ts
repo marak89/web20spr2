@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Dzial } from '../dzial';
 //import { currentInvoice } from '../currentInvoice';
 import { Invoice } from '../invoice';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DzialyService } from '../dzialy.service'
 import { InvoiceService } from '../invoice.service';
 //import { MessageService } from '../message.service';
@@ -21,10 +21,10 @@ export class DashboardComponent implements OnInit {
   invoice: Invoice;
 
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
     private dzialyService: DzialyService,
     private invoiceService: InvoiceService,
-    
+
   ) { }
 
   ngOnInit() {
@@ -40,16 +40,25 @@ export class DashboardComponent implements OnInit {
     // this.dzialy = this.dzialyService.getDzialy();
   }
 
-  getInvoice(){
+  getInvoice() {
     this.invoiceService.getInvoice().subscribe(invoice => this.invoice = invoice);
   }
 
   setDzial(dzial: Dzial): void {
     console.log("Wybieram", dzial);
     this.invoiceService.setDzial(dzial);
-    
+
     //currentInvoice.dzial = dzial;
     console.log(this.invoice.dzial);
+
+    if (this.invoiceService.getCustomer()) {
+      this.router.navigate(['invoicecontent']);
+    } else {
+      this.router.navigate(['wybierzKlienta']);
+    }
+
+
+
   }
 
 }

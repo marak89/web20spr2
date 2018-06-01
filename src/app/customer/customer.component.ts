@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DzialyService } from '../dzialy.service';
 import { InvoiceService } from '../invoice.service';
 import { CustomersService } from '../customers.service';
@@ -16,38 +16,63 @@ import { Observable } from 'rxjs';
 })
 export class CustomerComponent implements OnInit {
 
-  myControl: FormControl = new FormControl();
+  myControl: FormControl;
   customers: Customer[];
   filteredOptions: Observable<Customer[]>;
-
+  selectedCustomer: Customer;
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
     private dzialyService: DzialyService,
     private invoiceService: InvoiceService,
     private customersService: CustomersService
-  ) { }
+  ) {
+    this.myControl = new FormControl();
+
+  }
 
 
   ngOnInit() {
-     this.getCustomers();
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filter(val))
-      );
+    this.getCustomers();
   }
 
   filter(val: string): Customer[] {
     return this.customers.filter(
-      option => option.name.toLowerCase().includes(
+      customer => 
+      (customer.name.toLowerCase().includes(
         val.toLowerCase()
-    )
-  );
+      )) 
+      ||
+      (customer.lastname.toLowerCase().includes(
+        val.toLowerCase()
+      ))
+    );
   }
 
   getCustomers() {
-    this.customersService.getCustomers().subscribe(customers => this.customers = customers);
+    this.customersService.getCustomers().subscribe(
+      customers => this.customers = customers,
+      (err) => console.error(err),
+      () => {
+        this.filteredOptions = this.myControl.valueChanges
+          .pipe(
+            startWith(''),
+            map(val => this.filter(val))
+          );
+        //console.log(this.customers);
+      });
 
+  }
+
+  clickOnCustomer(customer: Customer) {
+    console.log(customer);
+    
+    this.selectedCustomer = customer;
+    this.myControl.disable();
+  }
+
+  clickSaveSelectedCustomer(){
+    this.invoiceService.setCustomer(this.selectedCustomer);
+    this.router.navigate(['invoicecontent']);
   }
 
 }

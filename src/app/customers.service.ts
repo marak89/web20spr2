@@ -14,6 +14,7 @@ import { DnaWebSockService } from './dna-web-sock.service';
 export class CustomersService {
 
   private customerUrl = 'https://sandbox.desire24.com/api/customers/';
+  
 
   constructor(
     private http: HttpClient,
@@ -40,35 +41,7 @@ export class CustomersService {
 // console.log(this.example);
 
   getCustomers(): Observable<Customer[]> {
-    // let username: string = 'dna';
-    // let password: string = 'dna20';
-    // let btoastr = username + ":" + password
-    // let btoapass =  btoa(btoastr);
-    // let authHeadStr = "Authorization Basic " + btoapass;
-    // let fromweb = 'Authorization: Basic ZG5hOmRuYTIw';
-    // let headersObj: HttpHeaders = new HttpHeaders(authHeadStr);
-    
-    // headersObj.append("X-TEST-HEADER", "T3st d3bUg H34D3R"); 
-    // //headersObj.append("Content-Type", "application/x-www-form-urlencoded");
-    // console.log(username);
-    // console.log(password);
-    // console.log(btoastr);
-    // console.log(btoapass);
-    // console.log(authHeadStr);
-    // console.log(headersObj);
-
-    //return this.dnaWebSockService.GetInstanceStatus();
-
-    //return this.http.get<Customer[]>(this.customerUrl,{headers: headersObj});
-    // .pipe(catchError(this.handleError('getHeroes', [])))
-    // .do( res => console.log('HTTP response:', res))
-    // .map(res => res.json().payload)
-    // .do(console.log);;
-  ;
-
-    // return this.http.get<Customer[]>(this.customerUrl,{headers:headersObj}).pipe(
-    //   catchError(this.handleError('getHeroes', []))
-    // );
+        return this.http.get<Customer[]>(this.customerUrl);
   }
 
   /**
