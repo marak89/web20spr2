@@ -1,8 +1,10 @@
 import { Dzial } from "./dzial";
+import { Customer } from "./customer";
 
 export class Invoice{
     
     dzial: Dzial;
+    customer: Customer
     
     
     constructor(){

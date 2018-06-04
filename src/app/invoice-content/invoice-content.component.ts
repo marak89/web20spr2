@@ -44,7 +44,7 @@ export class InvoiceContentComponent implements OnInit {
     if(this.invoice.dzial.id === 0 ){
       this.router.navigate(['wybierzdzial']);
     }
-    if(this.invoice.customer.id === undefined ){
+    if(this.invoice.customer.id === 0 ){
       this.router.navigate(['wybierzKlienta']);
     }
 

@@ -49,7 +49,10 @@ export class CustomerComponent implements OnInit {
   }
 
   getCustomers() {
-    this.customersService.getCustomers().subscribe(
+    //while(!this.customers){ 
+      console.log('subskrybuje')
+      console.log(this.customers);
+      this.customersService.getCustomers().subscribe(
       customers => this.customers = customers,
       (err) => console.error(err),
       () => {
@@ -60,6 +63,8 @@ export class CustomerComponent implements OnInit {
           );
         //console.log(this.customers);
       });
+    //}
+    
 
   }
 

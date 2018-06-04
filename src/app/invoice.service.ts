@@ -28,7 +28,7 @@ export class InvoiceService {
 
   getCustomer(): Customer{
     console.log('wczytuje takiego customera: ',INVOICE.customer);
-    if( INVOICE.customer.id !== undefined ){
+    if( INVOICE.customer.id !== 0 ){
       console.log('Wczytany customer jest typu Customer');
       return INVOICE.customer;
     } else {
