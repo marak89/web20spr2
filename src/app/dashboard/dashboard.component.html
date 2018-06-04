@@ -2,10 +2,10 @@
   Wybierz dział:
 </h2>
 <a *ngFor="let dzial of dzialy" 
-class="dzial dzial{{ dzial.id }}" 
+ 
 (click)="setDzial(dzial)" 
 >
-  <div>
+  <div [class]="'dzial dzial'+dzial.id">
     <h3>{{dzial.przeznaczenie | uppercase}}</h3>
     <p>Nazwisko na fakturze:
       <b>{{ dzial.imienazwisko }}</b>

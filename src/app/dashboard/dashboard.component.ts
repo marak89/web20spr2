@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Dzial } from '../dzial';
-//import { currentInvoice } from '../currentInvoice';
+// import { currentInvoice } from '../currentInvoice';
 import { Invoice } from '../invoice';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DzialyService } from '../dzialy.service'
+import { DzialyService } from '../dzialy.service';
 import { InvoiceService } from '../invoice.service';
-//import { MessageService } from '../message.service';
+// import { MessageService } from '../message.service';
 
 
 
@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getDzialy(): void {
-    //console.log(typeof this.dzialyService.getDzialy());
-    //console.log(this.dzialyService.getDzialy());
+    // console.log(typeof this.dzialyService.getDzialy());
+    // console.log(this.dzialyService.getDzialy());
 
     this.dzialyService.getDzialy().subscribe(dzialy => this.dzialy = dzialy);
     // this.dzialy = this.dzialyService.getDzialy();
@@ -45,10 +45,10 @@ export class DashboardComponent implements OnInit {
   }
 
   setDzial(dzial: Dzial): void {
-    console.log("Wybieram", dzial);
+    console.log('Wybieram', dzial);
     this.invoiceService.setDzial(dzial);
 
-    //currentInvoice.dzial = dzial;
+    // currentInvoice.dzial = dzial;
     console.log(this.invoice.dzial);
 
     if (this.invoiceService.getCustomer()) {

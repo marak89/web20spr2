@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Customer } from './customer';
 
 
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { MessageService } from './message.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService } from './message.service';
 
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -15,7 +15,7 @@ export class CustomersService {
 
   private customerNetUrl = 'https://m89.eu/api/customers/net/';
   private customerWwwUrl = 'https://m89.eu/api/customers/www/';
-  
+
 
   constructor(
     private http: HttpClient,
@@ -30,7 +30,7 @@ export class CustomersService {
 //   let username : string = 'username';
 //   let password : string = 'password';
 //   let headers = new Headers();
-//   headers.append("Authorization", "Basic " + btoa(username + ":" + password)); 
+//   headers.append("Authorization", "Basic " + btoa(username + ":" + password));
 //   headers.append("Content-Type", "application/x-www-form-urlencoded");
 //   this.http.get('http://localhost:8888/api/', {
 //     headers: headers
@@ -42,13 +42,13 @@ export class CustomersService {
 // console.log(this.example);
 
   getCustomers(lmsId: number): Observable<Customer[]> {
-    if(lmsId === 1){
+    if (lmsId === 1) {
       return this.http.get<Customer[]>(this.customerNetUrl);
     }
-    if(lmsId === 2){
+    if (lmsId === 2) {
       return this.http.get<Customer[]>(this.customerWwwUrl);
     }
-        
+
   }
 
   /**

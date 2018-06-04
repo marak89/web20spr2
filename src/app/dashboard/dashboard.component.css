@@ -1,9 +1,11 @@
 .dzial{
-    
+border: 1px solid black;
+
+padding: 20px;
 }
 
 .dzial1{
-    background-color: azure;
+    background-color: chartreuse;
 }
 
 .dzial2{

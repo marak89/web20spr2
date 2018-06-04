@@ -1,4 +1,7 @@
 <form class="example-form">
+  <h2>
+    Wybierz klienta:
+  </h2>
   <mat-form-field class="example-full-width">
 
     <input 
@@ -16,7 +19,7 @@
         (click)="clickOnCustomer(customer)"
         >
         <p>{{customer.name}}
-        <b>{{customer.lastname}}</b>
+        {{customer.lastname}}
         <br />
         {{customer.street}} {{customer.building}}
         {{customer.zip}} {{customer.city}}</p>
@@ -35,8 +38,4 @@
 
 <div *ngIf="selectedCustomer">
   <button (click)="clickSaveSelectedCustomer()" >Wybierz</button>
-
-<pre >
-  {{selectedCustomer | json}}
-</pre>
 </div>

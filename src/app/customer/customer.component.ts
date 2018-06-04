@@ -17,7 +17,7 @@ import { Invoice } from '../invoice';
 })
 export class CustomerComponent implements OnInit {
 
-  invoice: Invoice
+  invoice: Invoice;
   myControl: FormControl;
   customers: Customer[];
   filteredOptions: Observable<Customer[]>;
@@ -38,22 +38,22 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
     this.getInvoice();
-    
-    if(this.invoice.dzial.id === 0 ){
+
+    if (this.invoice.dzial.id === 0 ) {
       this.router.navigate(['wybierzdzial']);
     } else {
       this.getCustomers();
     }
 
-    
+
   }
 
   filter(val: string): Customer[] {
     return this.customers.filter(
-      customer => 
+      customer =>
       (customer.name.toLowerCase().includes(
         val.toLowerCase()
-      )) 
+      ))
       ||
       (customer.lastname.toLowerCase().includes(
         val.toLowerCase()
@@ -62,8 +62,8 @@ export class CustomerComponent implements OnInit {
   }
 
   getCustomers() {
-    //while(!this.customers){ 
-      console.log('subskrybuje')
+    // while(!this.customers){
+      console.log('subskrybuje');
       console.log(this.invoice.dzial.id);
       this.customersService.getCustomers(this.invoice.dzial.id).subscribe(
       customers => this.customers = customers,
@@ -74,20 +74,20 @@ export class CustomerComponent implements OnInit {
             startWith(''),
             map(val => this.filter(val))
           );
-        //console.log(this.customers);
+        // console.log(this.customers);
       });
-    //}
-    
+    // }
+
   }
 
   clickOnCustomer(customer: Customer) {
     console.log(customer);
-    
+
     this.selectedCustomer = customer;
     this.myControl.disable();
   }
 
-  clickSaveSelectedCustomer(){
+  clickSaveSelectedCustomer() {
     this.invoiceService.setCustomer(this.selectedCustomer);
     this.router.navigate(['invoicecontent']);
   }
