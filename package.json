@@ -28,6 +28,7 @@
     "bootstrap": "^4.1.0",
     "chosen-npm": "^1.4.2",
     "core-js": "^2.4.1",
+    "ibantools": "^2.0.0",
     "jquery": "^1.9.1",
     "ng": "0.0.0-rc6",
     "ngx-bootstrap": "^2.0.4",

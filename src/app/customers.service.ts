@@ -13,7 +13,8 @@ import { DnaWebSockService } from './dna-web-sock.service';
 @Injectable()
 export class CustomersService {
 
-  private customerUrl = 'https://sandbox.desire24.com/api/customers/';
+  private customerNetUrl = 'https://sandbox.desire24.com/api/customers/net';
+  private customerWwwUrl = 'https://sandbox.desire24.com/api/customers/www';
   
 
   constructor(
@@ -40,8 +41,14 @@ export class CustomersService {
 //     );
 // console.log(this.example);
 
-  getCustomers(): Observable<Customer[]> {
-        return this.http.get<Customer[]>(this.customerUrl);
+  getCustomers(lmsId: number): Observable<Customer[]> {
+    if(lmsId === 1){
+      return this.http.get<Customer[]>(this.customerNetUrl);
+    }
+    if(lmsId === 2){
+      return this.http.get<Customer[]>(this.customerWwwUrl);
+    }
+        
   }
 
   /**

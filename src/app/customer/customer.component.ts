@@ -8,6 +8,7 @@ import { Customer } from '../customer';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Invoice } from '../invoice';
 
 @Component({
   selector: 'app-customer',
@@ -16,6 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class CustomerComponent implements OnInit {
 
+  invoice: Invoice
   myControl: FormControl;
   customers: Customer[];
   filteredOptions: Observable<Customer[]>;
@@ -30,9 +32,20 @@ export class CustomerComponent implements OnInit {
 
   }
 
+  getInvoice() {
+    this.invoiceService.getInvoice().subscribe(invoice => this.invoice = invoice);
+  }
 
   ngOnInit() {
-    this.getCustomers();
+    this.getInvoice();
+    
+    if(this.invoice.dzial.id === 0 ){
+      this.router.navigate(['wybierzdzial']);
+    } else {
+      this.getCustomers();
+    }
+
+    
   }
 
   filter(val: string): Customer[] {
@@ -51,8 +64,8 @@ export class CustomerComponent implements OnInit {
   getCustomers() {
     //while(!this.customers){ 
       console.log('subskrybuje')
-      console.log(this.customers);
-      this.customersService.getCustomers().subscribe(
+      console.log(this.invoice.dzial.id);
+      this.customersService.getCustomers(this.invoice.dzial.id).subscribe(
       customers => this.customers = customers,
       (err) => console.error(err),
       () => {
@@ -65,7 +78,6 @@ export class CustomerComponent implements OnInit {
       });
     //}
     
-
   }
 
   clickOnCustomer(customer: Customer) {

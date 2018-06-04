@@ -8,6 +8,8 @@ import { Dzial } from '../dzial';
 import { Invoice } from '../invoice';
 import { Router } from '@angular/router';
 
+//import {*} from '/'
+
 
 @Component({
   selector: 'app-invoice-content',
