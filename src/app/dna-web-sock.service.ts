@@ -8,17 +8,17 @@ export class DnaWebSockService {
 
 private websocket = null;
 
-  constructor(){
-    this.websocket = new WebSocket("ws://echo.websocket.org/");
+  constructor() {
+    // this.websocket = new WebSocket("ws://echo.websocket.org/");
   }
 
-  public GetInstanceStatus(): Observable<Event>{
-    return fromEvent(this.websocket,'message');
+  public GetInstanceStatus(): Observable<Event> {
+    return fromEvent(this.websocket, 'message');
 }
 
-  public sendMessage(text:string){
-    let msg = {msg:text};
+  public sendMessage(text: string) {
+    const msg = {msg: text};
     this.websocket.next(JSON.stringify(msg));
-  } 
+  }
 
 }
