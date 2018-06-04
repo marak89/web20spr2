@@ -8,13 +8,13 @@ import { MessageService } from './message.service'
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { DnaWebSockService } from './dna-web-sock.service';
-//import { toBase64String } from '@angular/compiler/src/output/source_map';
+
 
 @Injectable()
 export class CustomersService {
 
-  private customerNetUrl = 'https://sandbox.desire24.com/api/customers/net';
-  private customerWwwUrl = 'https://sandbox.desire24.com/api/customers/www';
+  private customerNetUrl = 'https://m89.eu/api/customers/net/';
+  private customerWwwUrl = 'https://m89.eu/api/customers/www/';
   
 
   constructor(
